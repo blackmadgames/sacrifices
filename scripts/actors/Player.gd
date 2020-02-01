@@ -46,7 +46,8 @@ func spend_soul() -> void:
 
 func _on_Player_die() -> void:
     print("You're dead'")
-    hp = max_hp
+    # For Debug purpose: restarting the scene
+    get_tree().change_scene("res://scenes/game_scenes/Sandbox.tscn")
 
 func _on_Shop_checkout_item(item_type) -> void:
     if souls_count != 0:
