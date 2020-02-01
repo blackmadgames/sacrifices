@@ -6,7 +6,7 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
     var movement = _get_movement_from_input()
 
-    velocity = speed * movement * delta
+    velocity = speed * movement * delta * 1000
     velocity = move_and_slide(velocity)
 
 func _get_movement_from_input() -> Vector2:
