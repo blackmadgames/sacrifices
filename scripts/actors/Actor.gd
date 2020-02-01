@@ -15,6 +15,5 @@ func _physics_process(delta: float) -> void:
 
 func hit() -> void:
     hp -= 1
-    print(hp)
     if hp == 0:
         emit_signal("die")

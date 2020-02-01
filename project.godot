@@ -19,6 +19,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/actors/EnemyProjectile.gd"
 }, {
+"base": "Reference",
+"class": "Enum",
+"language": "GDScript",
+"path": "res://scripts/data/Enum.gd"
+}, {
+"base": "Node2D",
+"class": "ItemCounter",
+"language": "GDScript",
+"path": "res://scripts/ItemCounter.gd"
+}, {
 "base": "Projectile",
 "class": "PlayerProjectile",
 "language": "GDScript",
@@ -32,6 +42,8 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Actor": "",
 "EnemyProjectile": "",
+"Enum": "",
+"ItemCounter": "",
 "PlayerProjectile": "",
 "Projectile": ""
 }
@@ -75,6 +87,11 @@ move_down={
 fire={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+interact={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":70,"unicode":0,"echo":false,"script":null)
  ]
 }
 
