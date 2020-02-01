@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://art/placeholders/img/icon.png" type="Texture" id=2]
 [ext_resource path="res://scripts/items/Gun.gd" type="Script" id=3]
 [ext_resource path="res://scenes/actors/PlayerProjectile.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/fx/SoulsCircle.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 60, 60 )
@@ -25,5 +26,10 @@ position = Vector2( 90, 0 )
 rotation = 1.5708
 script = ExtResource( 3 )
 projectile_scene = ExtResource( 4 )
+
+[node name="SoulsCircle" type="Node2D" parent="."]
+script = ExtResource( 5 )
 [connection signal="die" from="." to="." method="_on_Player_die"]
 [connection signal="fire" from="." to="Gun" method="_on_Player_fire"]
+[connection signal="soul_lost" from="." to="SoulsCircle" method="_on_Player_soul_lost"]
+[connection signal="soul_lost" from="." to="." method="_on_Player_soul_lost"]
