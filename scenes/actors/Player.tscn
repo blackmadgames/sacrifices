@@ -25,3 +25,5 @@ position = Vector2( 90, 0 )
 rotation = 1.5708
 script = ExtResource( 3 )
 projectile_scene = ExtResource( 4 )
+[connection signal="die" from="." to="." method="_on_Player_die"]
+[connection signal="fire" from="." to="Gun" method="_on_Player_fire"]
