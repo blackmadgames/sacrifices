@@ -9,14 +9,12 @@ var max_gun_ammo: int = 30
 onready var gun_ammo = max_gun_ammo
 
 var souls_count: int = 10
-var hp_lost_timer
 
 func _ready() -> void:
     $SoulsCircle.start(souls_count)
-    hp_lost_timer = get_node("Timer")
-    hp_lost_timer.set_wait_time(.1)
 
-    hp_lost_timer.connect("timeout", self, "_on_Timer_hp_lost_timeout")
+    $Timer.set_wait_time(.1)
+    $Timer.connect("timeout", self, "_on_Timer_hp_lost_timeout")
 
 func _process(_delta: float) -> void:
     look_at(get_global_mouse_position())
@@ -72,7 +70,7 @@ func _on_Player_hit() -> void:
 
 func _on_Player_hp_lost() -> void:
     $Sprite.modulate = Color(1, 0, 0)  # red shade
-    hp_lost_timer.start()
+    $Timer.start()
 
 func _on_Timer_hp_lost_timeout() -> void:
     $Sprite.modulate = Color(1, 1, 1)  # Back to normal
