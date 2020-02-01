@@ -2,14 +2,21 @@ extends Actor
 
 signal fire
 signal soul_lost
+signal hit
+signal hp_lost
 
 var max_gun_ammo: int = 30
 onready var gun_ammo = max_gun_ammo
 
 var souls_count: int = 10
+var hp_lost_timer
 
 func _ready() -> void:
     $SoulsCircle.start(souls_count)
+    hp_lost_timer = get_node("Timer")
+    hp_lost_timer.set_wait_time(.1)
+
+    hp_lost_timer.connect("timeout", self, "_on_Timer_hp_lost_timeout")
 
 func _process(_delta: float) -> void:
     look_at(get_global_mouse_position())
@@ -55,3 +62,16 @@ func _recharge_ammo() -> void:
 
 func _heal() -> void:
     hp = max(max_hp, hp + 1)
+
+func _on_Player_hit() -> void:
+    hp -= 1
+    emit_signal("hp_lost")
+    if hp == 0:
+        emit_signal('die')
+
+func _on_Player_hp_lost() -> void:
+    $Sprite.modulate = Color(1, 0, 0)  # red shade
+    hp_lost_timer.start()
+
+func _on_Timer_hp_lost_timeout() -> void:
+    $Sprite.modulate = Color(1, 1, 1)  # Back to normal
