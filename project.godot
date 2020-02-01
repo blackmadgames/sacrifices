@@ -20,8 +20,12 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Sacrifices"
+config/name="Sacrifices must be made"
 config/icon="res://art/placeholders/img/icon.png"
+
+[display]
+
+mouse_cursor/custom_image="res://art/placeholders/img/cross.png"
 
 [input]
 
