@@ -3,7 +3,7 @@ class_name Actor
 
 signal die
 
-var max_hp: int = 5
+export var max_hp: int = 5
 var velocity: = Vector2.ZERO
 
 onready var hp: = max_hp

@@ -1,5 +1,7 @@
 extends Node2D
 
+var Enum = preload("res://scripts/data/Enum.gd")
+
 signal checkout_item
 
 func _on_AmmoCounter_checkout_item() -> void:
