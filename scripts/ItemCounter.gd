@@ -3,7 +3,7 @@ class_name ItemCounter
 
 signal checkout_item
 
-const ROTATION_SPEED: = 10
+const ROTATION_SPEED: = 5
 const UNZOOM_SCALE: = 0.8
 const ZOOM_SCALE: = 1.1
 
