@@ -2,6 +2,7 @@ extends Actor
 
 signal fire
 signal soul_lost
+signal hit
 
 var max_gun_ammo: int = 30
 onready var gun_ammo = max_gun_ammo
@@ -39,7 +40,8 @@ func spend_soul() -> void:
 
 func _on_Player_die() -> void:
     print("You're dead'")
-    hp = max_hp
+    # For Debug purpose: restarting the scene
+    get_tree().change_scene(get_tree().get_current_scene().get_filename())
 
 func _on_Shop_checkout_item(item_type) -> void:
     if souls_count != 0:
@@ -55,3 +57,13 @@ func _recharge_ammo() -> void:
 
 func _heal() -> void:
     hp = max(max_hp, hp + 1)
+
+func _on_Player_hit() -> void:
+    hp -= 1
+    $Sprite.modulate = Color(1, 0, 0)  # red shade
+    $HpLostTimer.start()
+    if hp == 0:
+        emit_signal("die")
+
+func _on_HpLostTimer_timeout() -> void:
+    $Sprite.modulate = Color(1, 1, 1)  # Back to normal

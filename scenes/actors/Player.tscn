@@ -30,7 +30,12 @@ texture = ExtResource( 2 )
 
 [node name="SoulsCircle" type="Node2D" parent="."]
 script = ExtResource( 5 )
+
+[node name="HpLostTimer" type="Timer" parent="."]
+wait_time = 0.1
 [connection signal="die" from="." to="." method="_on_Player_die"]
 [connection signal="fire" from="." to="Gun" method="_on_Player_fire"]
-[connection signal="soul_lost" from="." to="." method="_on_Player_soul_lost"]
+[connection signal="hit" from="." to="." method="_on_Player_hit"]
 [connection signal="soul_lost" from="." to="SoulsCircle" method="_on_Player_soul_lost"]
+[connection signal="soul_lost" from="." to="." method="_on_Player_soul_lost"]
+[connection signal="timeout" from="HpLostTimer" to="." method="_on_HpLostTimer_timeout"]
