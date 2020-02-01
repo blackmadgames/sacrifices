@@ -27,4 +27,5 @@ func _process(_delta: float) -> void:
 
 func _on_Player_soul_lost() -> void:
     var instance = souls.pop_back()
-    instance.queue_free()
+    if instance != null:
+        instance.queue_free()d
