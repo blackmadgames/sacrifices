@@ -68,7 +68,7 @@ func _on_Player_hit() -> void:
     hp -= 1
     emit_signal("hp_lost")
     if hp == 0:
-        emit_signal('die')
+        emit_signal("die")
 
 func _on_Player_hp_lost() -> void:
     $Sprite.modulate = Color(1, 0, 0)  # red shade
