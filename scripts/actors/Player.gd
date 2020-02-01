@@ -3,7 +3,6 @@ extends Actor
 signal fire
 signal soul_lost
 signal hit
-signal hp_lost
 
 var max_gun_ammo: int = 30
 onready var gun_ammo = max_gun_ammo
@@ -61,13 +60,10 @@ func _heal() -> void:
 
 func _on_Player_hit() -> void:
     hp -= 1
-    emit_signal("hp_lost")
-    if hp == 0:
-        emit_signal("die")
-
-func _on_Player_hp_lost() -> void:
     $Sprite.modulate = Color(1, 0, 0)  # red shade
     $HpLostTimer.start()
+    if hp == 0:
+        emit_signal("die")
 
 func _on_HpLostTimer_timeout() -> void:
     $Sprite.modulate = Color(1, 1, 1)  # Back to normal
