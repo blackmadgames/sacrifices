@@ -47,7 +47,7 @@ func spend_soul() -> void:
 func _on_Player_die() -> void:
     print("You're dead'")
     # For Debug purpose: restarting the scene
-    get_tree().change_scene("res://scenes/game_scenes/Sandbox.tscn")
+    get_tree().change_scene(get_tree().get_current_scene().get_filename())
 
 func _on_Shop_checkout_item(item_type) -> void:
     if souls_count != 0:
