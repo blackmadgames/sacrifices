@@ -13,15 +13,37 @@ _global_script_classes=[ {
 "class": "Actor",
 "language": "GDScript",
 "path": "res://scripts/actors/Actor.gd"
+}, {
+"base": "Projectile",
+"class": "EnemyProjectile",
+"language": "GDScript",
+"path": "res://scripts/actors/EnemyProjectile.gd"
+}, {
+"base": "Projectile",
+"class": "PlayerProjectile",
+"language": "GDScript",
+"path": "res://scripts/actors/PlayerProjectile.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Projectile",
+"language": "GDScript",
+"path": "res://scripts/actors/Projectile.gd"
 } ]
 _global_script_class_icons={
-"Actor": ""
+"Actor": "",
+"EnemyProjectile": "",
+"PlayerProjectile": "",
+"Projectile": ""
 }
 
 [application]
 
-config/name="Sacrifices"
+config/name="Sacrifices must be made"
 config/icon="res://art/placeholders/img/icon.png"
+
+[display]
+
+mouse_cursor/custom_image="res://art/placeholders/img/cross.png"
 
 [input]
 
