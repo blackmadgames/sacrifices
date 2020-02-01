@@ -32,8 +32,6 @@ func _process_attack_input() -> void:
     if Input.is_action_just_pressed("fire") && gun_ammo != 0:
         gun_ammo -= 1
         emit_signal("fire", get_parent())
-        # for testing purposes
-        spend_soul()
 
 func spend_soul() -> void:
     souls_count -= 1
@@ -42,3 +40,18 @@ func spend_soul() -> void:
 func _on_Player_die() -> void:
     print("You're dead'")
     hp = max_hp
+
+func _on_Shop_checkout_item(item_type) -> void:
+    if souls_count != 0:
+        spend_soul()
+
+        if item_type == Enum.ItemTypes.AMMO:
+            _recharge_ammo()
+        elif item_type == Enum.ItemTypes.SKULL:
+            _heal()
+
+func _recharge_ammo() -> void:
+    gun_ammo = max_gun_ammo
+
+func _heal() -> void:
+    hp = max(max_hp, hp + 1)
