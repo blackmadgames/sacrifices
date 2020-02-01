@@ -4,7 +4,7 @@ func _process(_delta: float) -> void:
     look_at(get_global_mouse_position())
 
 func _physics_process(delta: float) -> void:
-    var movement = _get_movement_from_input()
+    var movement: Vector2 = _get_movement_from_input()
 
     velocity = speed * movement * delta * 1000
     velocity = move_and_slide(velocity)
