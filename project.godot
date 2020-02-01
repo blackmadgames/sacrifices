@@ -39,6 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Sacrifices must be made"
+run/main_scene="res://scenes/game_scenes/Sandbox.tscn"
 config/icon="res://art/placeholders/img/icon.png"
 
 [display]
