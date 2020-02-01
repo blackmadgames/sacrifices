@@ -32,5 +32,5 @@ texture = ExtResource( 2 )
 script = ExtResource( 5 )
 [connection signal="die" from="." to="." method="_on_Player_die"]
 [connection signal="fire" from="." to="Gun" method="_on_Player_fire"]
-[connection signal="soul_lost" from="." to="SoulsCircle" method="_on_Player_soul_lost"]
 [connection signal="soul_lost" from="." to="." method="_on_Player_soul_lost"]
+[connection signal="soul_lost" from="." to="SoulsCircle" method="_on_Player_soul_lost"]

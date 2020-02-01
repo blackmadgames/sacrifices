@@ -29,8 +29,10 @@ func _get_movement_from_input() -> Vector2:
     )
 
 func _process_attack_input() -> void:
-    if Input.is_action_just_pressed("fire"):
+    if Input.is_action_just_pressed("fire") && gun_ammo != 0:
+        gun_ammo -= 1
         emit_signal("fire", get_parent())
+        # for testing purposes
         spend_soul()
 
 func spend_soul() -> void:
