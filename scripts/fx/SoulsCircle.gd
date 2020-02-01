@@ -7,7 +7,7 @@ export var radius: int = 128
 export var rotation_speed: float = 0.1
 
 func start(initial_souls_count: int) -> void:
-    for i in range(initial_souls_count):
+    for _i in range(initial_souls_count):
         var instance = SOUL_SCENE.instance()
         souls.append(instance)
         add_child(instance)
