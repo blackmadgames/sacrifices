@@ -3,5 +3,6 @@
 [ext_resource path="res://scenes/actors/Player.tscn" type="PackedScene" id=1]
 
 [node name="Root" type="Node2D"]
+position = Vector2( 0.778442, 1.55688 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
