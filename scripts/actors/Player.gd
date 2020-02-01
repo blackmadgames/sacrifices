@@ -8,6 +8,8 @@ var max_gun_ammo: int = 30
 onready var gun_ammo = max_gun_ammo
 
 var souls_count: int = 10
+var shield_cost: int = 3
+var shield_up: bool = false
 
 func _ready() -> void:
     $SoulsCircle.start(souls_count)
@@ -33,6 +35,13 @@ func _process_attack_input() -> void:
     if Input.is_action_just_pressed("fire") && gun_ammo != 0:
         gun_ammo -= 1
         emit_signal("fire", get_parent())
+    if (Input.is_action_just_pressed("shield_up") && souls_count >= 3 &&
+        not shield_up && $ShieldCooldownTimer.get_time_left() == 0):
+        for _i in range(shield_cost):
+            spend_soul()
+        shield_up = true
+        $Sprite.modulate = Color(0, .5, .9)
+        $ShieldUpTimer.start()
 
 func spend_soul() -> void:
     souls_count -= 1
@@ -59,6 +68,8 @@ func _heal() -> void:
     hp = max(max_hp, hp + 1)
 
 func _on_Player_hit() -> void:
+    if shield_up:
+        return
     hp -= 1
     $Sprite.modulate = Color(1, 0, 0)  # red shade
     $HpLostTimer.start()
@@ -67,3 +78,8 @@ func _on_Player_hit() -> void:
 
 func _on_HpLostTimer_timeout() -> void:
     $Sprite.modulate = Color(1, 1, 1)  # Back to normal
+
+func _on_ShieldUpTimer_timeout() -> void:
+    shield_up = false
+    $Sprite.modulate = Color(1, 1, 1)
+    $ShieldCooldownTimer.start()
