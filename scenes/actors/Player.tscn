@@ -33,9 +33,18 @@ script = ExtResource( 5 )
 
 [node name="HpLostTimer" type="Timer" parent="."]
 wait_time = 0.1
+one_shot = true
+
+[node name="ShieldUpTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="ShieldCooldownTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
 [connection signal="die" from="." to="." method="_on_Player_die"]
 [connection signal="fire" from="." to="Gun" method="_on_Player_fire"]
 [connection signal="hit" from="." to="." method="_on_Player_hit"]
 [connection signal="soul_lost" from="." to="SoulsCircle" method="_on_Player_soul_lost"]
-[connection signal="soul_lost" from="." to="." method="_on_Player_soul_lost"]
 [connection signal="timeout" from="HpLostTimer" to="." method="_on_HpLostTimer_timeout"]
+[connection signal="timeout" from="ShieldUpTimer" to="." method="_on_ShieldUpTimer_timeout"]
