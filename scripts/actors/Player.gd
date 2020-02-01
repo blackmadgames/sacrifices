@@ -13,9 +13,6 @@ var souls_count: int = 10
 func _ready() -> void:
     $SoulsCircle.start(souls_count)
 
-    $Timer.set_wait_time(.1)
-    $Timer.connect("timeout", self, "_on_Timer_hp_lost_timeout")
-
 func _process(_delta: float) -> void:
     look_at(get_global_mouse_position())
     _process_attack_input()
@@ -70,7 +67,7 @@ func _on_Player_hit() -> void:
 
 func _on_Player_hp_lost() -> void:
     $Sprite.modulate = Color(1, 0, 0)  # red shade
-    $Timer.start()
+    $HpLostTimer.start()
 
-func _on_Timer_hp_lost_timeout() -> void:
+func _on_HpLostTimer_timeout() -> void:
     $Sprite.modulate = Color(1, 1, 1)  # Back to normal
