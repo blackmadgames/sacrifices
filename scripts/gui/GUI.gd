@@ -26,6 +26,7 @@ func _on_Player_hit(_new_hp: int) -> void:
     print("Player it")
     $Counters/HPCounter.remove_child($Counters/HPCounter.get_child(0))
 
-func _on_Player_healed(_new_hp: int) -> void:
-    var instance = HP_ICON_SCENE.instance()
-    $Counters/HPCounter.add_child(instance)
+func _on_Player_healed(new_hp: int) -> void:
+    if $Counters/HPCounter.get_children().size() != new_hp:
+        var instance = HP_ICON_SCENE.instance()
+        $Counters/HPCounter.add_child(instance)

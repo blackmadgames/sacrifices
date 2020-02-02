@@ -8,13 +8,14 @@ signal recharged_ammo
 signal healed
 signal shield_up
 
-var max_gun_ammo: int = 30
+var max_gun_ammo: int = 20
 onready var gun_ammo = max_gun_ammo
 
-var shield_cost: int = 3
+var shield_cost: int = 2
 var shield_up: bool = false
 
 func _ready() -> void:
+    Game.initialize()
     $SoulsCircle.start(Game.souls_count)
     $".."/CanvasLayer/GUI.initialize(gun_ammo, Game.souls_count, hp)
 
@@ -51,10 +52,12 @@ func _process_attack_input() -> void:
 func spend_soul() -> void:
     Game.souls_count -= 1
     emit_signal("soul_lost", Game.souls_count)
+    if Game.souls_count == 0:
+        _game_over()
 
 func _on_Player_die() -> void:
-    # For Debug purpose: restarting the scene
-    get_tree().change_scene(get_tree().get_current_scene().get_filename())
+    Game.souls_count = 0
+    _game_over()
 
 func _on_Shop_checkout_item(item_type) -> void:
     if Game.souls_count != 0:
@@ -70,7 +73,7 @@ func _recharge_ammo() -> void:
     emit_signal("recharged_ammo", gun_ammo)
 
 func _heal() -> void:
-    hp = max(max_hp, hp + 1)
+    hp = min(max_hp, hp + 1)
     emit_signal("healed", hp)
 
 func hit() -> void:
@@ -88,3 +91,6 @@ func _on_ShieldUpTimer_timeout() -> void:
     shield_up = false
     $Sprite.modulate = Color(1, 1, 1)
     $ShieldCooldownTimer.start()
+
+func _game_over() -> void:
+    get_tree().change_scene("res://scenes/screens/GameOver.tscn")
