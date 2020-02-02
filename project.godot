@@ -153,6 +153,7 @@ look_ahead={
 
 [rendering]
 
+quality/2d/use_pixel_snap=true
 environment/default_clear_color=Color( 0.129412, 0.14902, 0.219608, 1 )
 quality/depth/hdr=false
 environment/default_environment="res://default_env.tres"
