@@ -54,7 +54,6 @@ func spend_soul() -> void:
     emit_signal("soul_lost", souls_count)
 
 func _on_Player_die() -> void:
-    print("You're dead'")
     # For Debug purpose: restarting the scene
     get_tree().change_scene(get_tree().get_current_scene().get_filename())
 
