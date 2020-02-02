@@ -57,7 +57,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Sacrifices must be made"
-config/icon="res://art/placeholders/img/icon.png"
+config/icon="res://assets/art/placeholders/img/soul.png"
 
 [display]
 
