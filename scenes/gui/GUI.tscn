@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/gui/SoulsCounter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/gui/AmmoCounter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/gui/GUI.gd" type="Script" id=3]
+
+[node name="GUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Counters" type="VBoxContainer" parent="."]
+margin_left = 12.9129
+margin_top = 12.3964
+margin_right = 140.913
+margin_bottom = 140.396
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AmmoCounter" parent="Counters" instance=ExtResource( 2 )]
+margin_top = 16.0
+margin_bottom = 62.0
+
+[node name="SoulsCounter" parent="Counters" instance=ExtResource( 1 )]
+margin_top = 66.0
+margin_bottom = 112.0

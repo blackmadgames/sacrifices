@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://art/placeholders/img/player_projectile.png" type="Texture" id=1]
+[ext_resource path="res://assets/art/placeholders/img/player_projectile.png" type="Texture" id=1]
 [ext_resource path="res://scripts/actors/PlayerProjectile.gd" type="Script" id=2]
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="ShaderMaterial" id=1]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=2]
 radius = 8.0
 
 [node name="PlayerProjectile" type="KinematicBody2D"]
@@ -14,9 +14,9 @@ collision_mask = 20
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 2 )
+material = SubResource( 1 )
 texture = ExtResource( 1 )
 offset = Vector2( 0, 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 2 )

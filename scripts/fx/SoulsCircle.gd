@@ -25,7 +25,7 @@ func _process(_delta: float) -> void:
         angle += step
 
 
-func _on_Player_soul_lost() -> void:
+func _on_Player_soul_lost(_souls_count: int) -> void:
     var instance = souls.pop_back()
     if instance != null:
         instance.queue_free()
