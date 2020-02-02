@@ -11,13 +11,12 @@ signal shield_up
 var max_gun_ammo: int = 30
 onready var gun_ammo = max_gun_ammo
 
-var souls_count: int = 10
 var shield_cost: int = 3
 var shield_up: bool = false
 
 func _ready() -> void:
-    $SoulsCircle.start(souls_count)
-    $".."/CanvasLayer/GUI.initialize(gun_ammo, souls_count, hp)
+    $SoulsCircle.start(Game.souls_count)
+    $".."/CanvasLayer/GUI.initialize(gun_ammo, Game.souls_count, hp)
 
 func _process(_delta: float) -> void:
     look_at(get_global_mouse_position())
@@ -40,7 +39,7 @@ func _process_attack_input() -> void:
     if Input.is_action_just_pressed("fire") && gun_ammo != 0:
         gun_ammo -= 1
         emit_signal("fire", get_parent(), gun_ammo)
-    if (Input.is_action_just_pressed("shield_up") && souls_count >= 3 &&
+    if (Input.is_action_just_pressed("shield_up") && Game.souls_count >= 3 &&
         not shield_up && $ShieldCooldownTimer.get_time_left() == 0):
         for _i in range(shield_cost):
             spend_soul()
@@ -50,15 +49,15 @@ func _process_attack_input() -> void:
         $ShieldUpTimer.start()
 
 func spend_soul() -> void:
-    souls_count -= 1
-    emit_signal("soul_lost", souls_count)
+    Game.souls_count -= 1
+    emit_signal("soul_lost", Game.souls_count)
 
 func _on_Player_die() -> void:
     # For Debug purpose: restarting the scene
     get_tree().change_scene(get_tree().get_current_scene().get_filename())
 
 func _on_Shop_checkout_item(item_type) -> void:
-    if souls_count != 0:
+    if Game.souls_count != 0:
         spend_soul()
 
         if item_type == Enum.ItemTypes.AMMO:

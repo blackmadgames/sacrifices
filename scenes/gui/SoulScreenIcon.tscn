@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/art/placeholders/img/soul.png" type="Texture" id=1]
+[ext_resource path="res://scripts/gui/SoulScreenIcon.gd" type="Script" id=2]
+
+[node name="SoulIcon" type="TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 16.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 64, 32 )
+rect_pivot_offset = Vector2( 32, 16 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
