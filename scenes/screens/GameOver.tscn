@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://gui/theme.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/gui/SoulsSavedContainer.gd" type="Script" id=2]
+[ext_resource path="res://scripts/screens/GameOver.gd" type="Script" id=3]
+
+[node name="GameOverScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 1280.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 0, 64 )
+theme = ExtResource( 1 )
+text = "Souls put to rest"
+align = 1
+valign = 1
+
+[node name="SoulsCountLabel" type="Label" parent="VBoxContainer"]
+margin_top = 68.0
+margin_right = 1280.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 0, 64 )
+theme = ExtResource( 1 )
+align = 1
+valign = 1
+
+[node name="SoulsSavedContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 136.0
+margin_right = 1280.0
+margin_bottom = 136.0
+alignment = 1
+script = ExtResource( 2 )
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+visible = false
+margin_top = 136.0
+margin_right = 1280.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 64 )
+theme = ExtResource( 1 )
+text = "Lost souls"
+align = 1
+valign = 1
+
+[node name="LostSoulsCountLabel" type="Label" parent="VBoxContainer"]
+visible = false
+margin_top = 136.0
+margin_right = 1280.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 64 )
+theme = ExtResource( 1 )
+align = 1
+valign = 1

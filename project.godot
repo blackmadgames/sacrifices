@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/systems/EnemySpawner.gd"
 }, {
+"base": "Area2D",
+"class": "Exit",
+"language": "GDScript",
+"path": "res://scripts/systems/Exit.gd"
+}, {
 "base": "Control",
 "class": "GUI",
 "language": "GDScript",
@@ -37,7 +42,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "ItemCounter",
 "language": "GDScript",
-"path": "res://scripts/ItemCounter.gd"
+"path": "res://scripts/systems/ItemCounter.gd"
 }, {
 "base": "Projectile",
 "class": "PlayerProjectile",
@@ -54,6 +59,7 @@ _global_script_class_icons={
 "Enemy": "",
 "EnemyProjectile": "",
 "EnemySpawner": "",
+"Exit": "",
 "GUI": "",
 "ItemCounter": "",
 "PlayerProjectile": "",
@@ -65,8 +71,15 @@ _global_script_class_icons={
 config/name="Sacrifices must be made"
 config/icon="res://assets/art/placeholders/img/soul.png"
 
+[autoload]
+
+Game="*res://scripts/Game.gd"
+SoulStories="*res://scripts/data/SoulStories.gd"
+
 [display]
 
+window/size/width=1280
+window/size/height=720
 mouse_cursor/custom_image="res://assets/art/placeholders/img/cross.png"
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
@@ -129,4 +142,5 @@ shield_up={
 
 [rendering]
 
+environment/default_clear_color=Color( 0.180392, 0.211765, 0.32549, 1 )
 environment/default_environment="res://default_env.tres"
