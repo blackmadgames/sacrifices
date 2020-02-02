@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/demon.png-9d627979e3036df8d6f2e99da0cf7a3f.stex"
+path="res://.import/gui_background.png-06d700e075dd58fe77d589e450c2a591.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/placeholders/img/demon.png"
-dest_files=[ "res://.import/demon.png-9d627979e3036df8d6f2e99da0cf7a3f.stex" ]
+source_file="res://assets/art/placeholders/img/gui_background.png"
+dest_files=[ "res://.import/gui_background.png-06d700e075dd58fe77d589e450c2a591.stex" ]
 
 [params]
 

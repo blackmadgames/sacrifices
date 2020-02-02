@@ -4,6 +4,8 @@ var Enum = preload("res://scripts/data/Enum.gd")
 
 signal fire
 signal soul_lost
+signal recharged_ammo
+signal healed
 
 var max_gun_ammo: int = 30
 onready var gun_ammo = max_gun_ammo
@@ -14,6 +16,7 @@ var shield_up: bool = false
 
 func _ready() -> void:
     $SoulsCircle.start(souls_count)
+    $".."/CanvasLayer/GUI.initialize(gun_ammo, souls_count, hp)
 
 func _process(_delta: float) -> void:
     look_at(get_global_mouse_position())
@@ -35,7 +38,7 @@ func _get_movement_from_input() -> Vector2:
 func _process_attack_input() -> void:
     if Input.is_action_just_pressed("fire") && gun_ammo != 0:
         gun_ammo -= 1
-        emit_signal("fire", get_parent())
+        emit_signal("fire", get_parent(), gun_ammo)
     if (Input.is_action_just_pressed("shield_up") && souls_count >= 3 &&
         not shield_up && $ShieldCooldownTimer.get_time_left() == 0):
         for _i in range(shield_cost):
@@ -46,7 +49,7 @@ func _process_attack_input() -> void:
 
 func spend_soul() -> void:
     souls_count -= 1
-    emit_signal("soul_lost")
+    emit_signal("soul_lost", souls_count)
 
 func _on_Player_die() -> void:
     print("You're dead'")
@@ -64,19 +67,19 @@ func _on_Shop_checkout_item(item_type) -> void:
 
 func _recharge_ammo() -> void:
     gun_ammo = max_gun_ammo
+    emit_signal("recharged_ammo", gun_ammo)
 
 func _heal() -> void:
     hp = max(max_hp, hp + 1)
+    emit_signal("healed", hp)
 
 func hit() -> void:
     if shield_up:
         return
 
-    .hit()
     $Sprite.modulate = Color(1, 0, 0)  # red shade
     $HpLostTimer.start()
-    if hp == 0:
-        emit_signal("die")
+    .hit()
 
 func _on_HpLostTimer_timeout() -> void:
     $Sprite.modulate = Color(1, 1, 1)  # Back to normal

@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/actors/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://art/placeholders/img/tilemap.png" type="Texture" id=2]
+[ext_resource path="res://assets/art/placeholders/img/tilemap.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Shop.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/PlayerCamera.gd" type="Script" id=4]
-[ext_resource path="res://scenes/systems/EnemySpawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/gui/GUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/systems/EnemySpawner.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -64,6 +65,10 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 [node name="Root" type="Node2D"]
 position = Vector2( 0.778442, 1.55688 )
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" parent="CanvasLayer" instance=ExtResource( 5 )]
+
 [node name="Player" parent="." groups=[
 "Player",
 ] instance=ExtResource( 1 )]
@@ -100,12 +105,17 @@ tile_data = PoolIntArray( 0, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 2, 5, 0, 2, 
 position = Vector2( 976, 80 )
 rotation = 3.14159
 
-[node name="EnemySpawner" parent="." instance=ExtResource( 5 )]
+[node name="EnemySpawner" parent="." instance=ExtResource( 6 )]
 position = Vector2( 974.175, 304.06 )
 rotation = -1.5708
 spawn_on_ready = true
 
-[node name="EnemySpawner2" parent="." instance=ExtResource( 5 )]
+[node name="EnemySpawner2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 763.129, 560.284 )
 spawn_on_ready = true
+[connection signal="fire" from="Player" to="CanvasLayer/GUI" method="_on_Player_fire"]
+[connection signal="healed" from="Player" to="CanvasLayer/GUI" method="_on_Player_healed"]
+[connection signal="hit" from="Player" to="CanvasLayer/GUI" method="_on_Player_hit"]
+[connection signal="recharged_ammo" from="Player" to="CanvasLayer/GUI" method="_on_Player_recharged_ammo"]
+[connection signal="soul_lost" from="Player" to="CanvasLayer/GUI" method="_on_Player_soul_lost"]
 [connection signal="checkout_item" from="Shop" to="Player" method="_on_Shop_checkout_item"]
