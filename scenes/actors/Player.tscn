@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/placeholders/img/player.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/sfx/ShieldUp.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/sfx/Shoot.wav" type="AudioStream" id=9]
 [ext_resource path="res://scripts/PlayerCamera.gd" type="Script" id=10]
+[ext_resource path="res://scenes/fx/ScreenShake.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14.4138, 15.7931 )
@@ -82,11 +83,14 @@ drag_margin_right = 0.1
 drag_margin_bottom = 0.1
 editor_draw_limits = true
 editor_draw_drag_margin = true
+
+[node name="ScreenShakeFX" parent="Pivot/CameraOffset/Camera2D" instance=ExtResource( 11 )]
 [connection signal="die" from="." to="." method="_on_Player_die"]
 [connection signal="fire" from="." to="Gun" method="_on_Player_fire"]
 [connection signal="fire" from="." to="SFX" method="_on_Player_fire"]
+[connection signal="hit" from="." to="Pivot/CameraOffset/Camera2D/ScreenShakeFX" method="_on_Player_hit"]
 [connection signal="shield_up" from="." to="SFX" method="_on_Player_shield_up"]
-[connection signal="soul_lost" from="." to="SFX" method="_on_Player_soul_lost"]
 [connection signal="soul_lost" from="." to="SoulsCircle" method="_on_Player_soul_lost"]
+[connection signal="soul_lost" from="." to="SFX" method="_on_Player_soul_lost"]
 [connection signal="timeout" from="HpLostTimer" to="." method="_on_HpLostTimer_timeout"]
 [connection signal="timeout" from="ShieldUpTimer" to="." method="_on_ShieldUpTimer_timeout"]

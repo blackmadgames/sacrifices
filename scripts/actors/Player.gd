@@ -81,8 +81,6 @@ func _heal() -> void:
 func hit() -> void:
     if shield_up:
         return
-    
-    OS.delay_msec(15)
 
     $Sprite.modulate = Color(1, 0, 0)  # red shade
     $HpLostTimer.start()
