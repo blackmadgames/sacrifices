@@ -4,9 +4,11 @@ const LOST_SOUL_STORY_SCENE = preload("res://scenes/gui/LostSoulStory.tscn")
 
 var display_lost_souls = false
 var soul_stories_count = 0
+var rng = RandomNumberGenerator.new()
 onready var lost_souls = Game.INITIAL_SOULS_COUNT - Game.souls_count
 
 func _ready() -> void:
+    rng.randomize()
     $VBoxContainer/SoulsSavedContainer.initialize(Game.souls_count)
     $VBoxContainer/SoulsCountLabel.text = str(Game.souls_count)
     $VBoxContainer/LostSoulsCountLabel.text = str(lost_souls)
@@ -31,6 +33,6 @@ func _display_lost_soul_story() -> void:
         $VBoxContainer.add_child(instance)
 
     soul_stories_count += 1
-    var story = SoulStories.STORIES[randi() % SoulStories.STORIES.size()]
+    var story = SoulStories.STORIES[rng.randi() % SoulStories.STORIES.size()]
     story += "\n\nThis soul will never know peace..."
     $VBoxContainer/LostSoulStory/Label.text = str(story)

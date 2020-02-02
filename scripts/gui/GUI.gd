@@ -23,7 +23,6 @@ func _on_Player_recharged_ammo(ammo_count: int) -> void:
     ammo_label.text = str(ammo_count)
 
 func _on_Player_hit(_new_hp: int) -> void:
-    print("Player it")
     $Counters/HPCounter.remove_child($Counters/HPCounter.get_child(0))
 
 func _on_Player_healed(new_hp: int) -> void:
