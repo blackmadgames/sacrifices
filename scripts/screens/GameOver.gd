@@ -20,7 +20,7 @@ func _process(_delta: float) -> void:
         elif soul_stories_count < lost_souls:
             _display_lost_soul_story()
         else:
-            get_tree().change_scene(Game.GAME_SCENE)
+            get_tree().change_scene("res://scenes/screens/TitleScreen.tscn")
     
 func _display_lost_souls() -> void:
     display_lost_souls = true
