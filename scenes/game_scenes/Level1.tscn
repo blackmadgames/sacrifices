@@ -36,74 +36,74 @@ position = Vector2( -848, -1616 )
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 5 )]
 position = Vector2( 81.3809, -333.991 )
-spawn_on_ready = true
+delay_between_spawn = 60.0
 
 [node name="EnemySpawner2" parent="." instance=ExtResource( 5 )]
 position = Vector2( -208.973, -239.868 )
-spawn_on_ready = true
+delay_between_spawn = 60.0
 
 [node name="EnemySpawner3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 401.547, -527.625 )
-spawn_on_ready = true
+delay_between_spawn = 60.0
 
 [node name="EnemySpawner4" parent="." instance=ExtResource( 5 )]
 position = Vector2( 399.924, -688.305 )
 rotation = -1.5708
-spawn_on_ready = true
+delay_between_spawn = 60.0
 
 [node name="EnemySpawner5" parent="." instance=ExtResource( 5 )]
 position = Vector2( 302.542, -430.784 )
 rotation = -1.5708
-spawn_on_ready = true
+delay_between_spawn = 60.0
 
 [node name="EnemySpawner6" parent="." instance=ExtResource( 5 )]
 position = Vector2( 145.109, -911.741 )
 rotation = -1.5708
-spawn_on_ready = true
+delay_between_spawn = 60.0
 
 [node name="EnemySpawner7" parent="." instance=ExtResource( 5 )]
 position = Vector2( -110.247, -653.68 )
 rotation = -1.5708
-spawn_on_ready = true
+delay_between_spawn = 60.0
 
 [node name="EnemySpawner8" parent="." instance=ExtResource( 5 )]
 position = Vector2( -46.9493, -1102.18 )
 rotation = -1.5708
-spawn_on_ready = true
+delay_between_spawn = 60.0
 
 [node name="EnemySpawner9" parent="." instance=ExtResource( 5 )]
 position = Vector2( -274.173, -1003.71 )
 rotation = -1.5708
-spawn_on_ready = true
+delay_between_spawn = 60.0
 
 [node name="EnemySpawner10" parent="." instance=ExtResource( 5 )]
 position = Vector2( -432.689, -1068.63 )
 rotation = -1.5708
-spawn_on_ready = true
+delay_between_spawn = 60.0
 
 [node name="EnemySpawner11" parent="." instance=ExtResource( 5 )]
 position = Vector2( -305.011, -1166.56 )
-spawn_on_ready = true
+delay_between_spawn = 60.0
 
 [node name="EnemySpawner12" parent="." instance=ExtResource( 5 )]
 position = Vector2( 239.245, -1164.93 )
-spawn_on_ready = true
+delay_between_spawn = 60.0
 
 [node name="EnemySpawner13" parent="." instance=ExtResource( 5 )]
 position = Vector2( 394.514, -1037.8 )
-spawn_on_ready = true
+delay_between_spawn = 60.0
 
 [node name="EnemySpawner14" parent="." instance=ExtResource( 5 )]
 position = Vector2( 301.461, -1300.73 )
-spawn_on_ready = true
+delay_between_spawn = 60.0
 
 [node name="EnemySpawner15" parent="." instance=ExtResource( 5 )]
 position = Vector2( 494.601, -1069.72 )
-spawn_on_ready = true
+delay_between_spawn = 60.0
 
 [node name="EnemySpawner16" parent="." instance=ExtResource( 5 )]
 position = Vector2( 527.061, -783.522 )
-spawn_on_ready = true
+delay_between_spawn = 60.0
 
 [node name="Shop" parent="." instance=ExtResource( 6 )]
 position = Vector2( 112, -558 )
@@ -124,6 +124,9 @@ rotation = -3.14159
 stream = ExtResource( 7 )
 volume_db = -18.0
 autoplay = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.0901961, 0.0431373, 0.0431373, 1 )
 [connection signal="fire" from="Player" to="CanvasLayer/GUI" method="_on_Player_fire"]
 [connection signal="healed" from="Player" to="CanvasLayer/GUI" method="_on_Player_healed"]
 [connection signal="hit" from="Player" to="CanvasLayer/GUI" method="_on_Player_hit"]

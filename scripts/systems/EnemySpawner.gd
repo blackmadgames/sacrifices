@@ -3,8 +3,8 @@ class_name EnemySpawner
 
 const ENEMY_SCENE = preload("res://scenes/actors/Enemy.tscn")
 
-export var delay_between_spawn: float = 15.0
-export var spawn_on_ready: bool = false
+export var delay_between_spawn: float = 20
+export var spawn_on_ready: bool = true
 
 func _ready() -> void:
     if spawn_on_ready:

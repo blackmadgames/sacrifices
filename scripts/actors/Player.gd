@@ -8,7 +8,7 @@ signal recharged_ammo
 signal healed
 signal shield_up
 
-var max_gun_ammo: int = 20
+var max_gun_ammo: int = 15
 onready var gun_ammo = max_gun_ammo
 
 var shield_cost: int = 2
