@@ -117,7 +117,7 @@ rotation = -3.14159
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = -20.0
+volume_db = -12.0
 autoplay = true
 [connection signal="fire" from="Player" to="CanvasLayer/GUI" method="_on_Player_fire"]
 [connection signal="healed" from="Player" to="CanvasLayer/GUI" method="_on_Player_healed"]
