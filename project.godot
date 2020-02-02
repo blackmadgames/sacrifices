@@ -14,15 +14,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/actors/Actor.gd"
 }, {
+"base": "Actor",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://scripts/actors/Enemy.gd"
+}, {
 "base": "Projectile",
 "class": "EnemyProjectile",
 "language": "GDScript",
 "path": "res://scripts/actors/EnemyProjectile.gd"
 }, {
-"base": "Reference",
-"class": "Enum",
+"base": "Node2D",
+"class": "EnemySpawner",
 "language": "GDScript",
-"path": "res://scripts/data/Enum.gd"
+"path": "res://scripts/systems/EnemySpawner.gd"
 }, {
 "base": "Node2D",
 "class": "ItemCounter",
@@ -41,8 +46,9 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Actor": "",
+"Enemy": "",
 "EnemyProjectile": "",
-"Enum": "",
+"EnemySpawner": "",
 "ItemCounter": "",
 "PlayerProjectile": "",
 "Projectile": ""
@@ -94,9 +100,9 @@ interact={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":70,"unicode":0,"echo":false,"script":null)
  ]
 }
-shield_up={
+look_ahead={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777238,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"unicode":0,"echo":false,"script":null)
  ]
 }
 
