@@ -102,6 +102,7 @@ tile_data = PoolIntArray( 0, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 2, 5, 0, 2, 
 position = Vector2( 976, 80 )
 rotation = 3.14159
 [connection signal="fire" from="Player" to="CanvasLayer/GUI" method="_on_Player_fire"]
+[connection signal="hit" from="Player" to="CanvasLayer/GUI" method="_on_Player_hit"]
 [connection signal="recharged_ammo" from="Player" to="CanvasLayer/GUI" method="_on_Player_recharged_ammo"]
 [connection signal="soul_lost" from="Player" to="CanvasLayer/GUI" method="_on_Player_soul_lost"]
 [connection signal="checkout_item" from="Shop" to="Player" method="_on_Shop_checkout_item"]

@@ -13,10 +13,11 @@ __meta__ = {
 }
 
 [node name="Counters" type="VBoxContainer" parent="."]
-margin_left = 12.9129
-margin_top = 12.3964
-margin_right = 140.913
-margin_bottom = 140.396
+margin_left = 14.0
+margin_top = 14.0
+margin_right = 190.0
+margin_bottom = 146.0
+rect_min_size = Vector2( 176, 0 )
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -24,8 +25,15 @@ __meta__ = {
 
 [node name="AmmoCounter" parent="Counters" instance=ExtResource( 2 )]
 margin_top = 16.0
+margin_right = 176.0
 margin_bottom = 62.0
 
 [node name="SoulsCounter" parent="Counters" instance=ExtResource( 1 )]
 margin_top = 66.0
+margin_right = 176.0
 margin_bottom = 112.0
+
+[node name="HPCounter" type="HBoxContainer" parent="Counters"]
+margin_top = 116.0
+margin_right = 176.0
+margin_bottom = 116.0

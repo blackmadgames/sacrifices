@@ -14,7 +14,7 @@ var shield_up: bool = false
 
 func _ready() -> void:
     $SoulsCircle.start(souls_count)
-    $".."/CanvasLayer/GUI.initialize(gun_ammo, souls_count)
+    $".."/CanvasLayer/GUI.initialize(gun_ammo, souls_count, hp)
 
 func _process(_delta: float) -> void:
     look_at(get_global_mouse_position())
