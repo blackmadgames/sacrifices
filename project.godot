@@ -69,7 +69,8 @@ _global_script_class_icons={
 [application]
 
 config/name="Sacrifices must be made"
-run/main_scene="res://scenes/game_scenes/Level1.tscn"
+run/main_scene="res://scenes/screens/TitleScreen.tscn"
+boot_splash/bg_color=Color( 0.109804, 0.164706, 0.254902, 1 )
 config/icon="res://assets/art/placeholders/img/soul.png"
 
 [autoload]
@@ -149,5 +150,5 @@ look_ahead={
 
 [rendering]
 
-environment/default_clear_color=Color( 0.180392, 0.211765, 0.32549, 1 )
+environment/default_clear_color=Color( 0.129412, 0.14902, 0.219608, 1 )
 environment/default_environment="res://default_env.tres"

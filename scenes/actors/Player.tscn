@@ -76,7 +76,7 @@ zoom = Vector2( 0.9, 0.9 )
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 smoothing_enabled = true
-smoothing_speed = 3.0
+smoothing_speed = 2.0
 drag_margin_left = 0.1
 drag_margin_top = 0.1
 drag_margin_right = 0.1
@@ -86,8 +86,8 @@ editor_draw_drag_margin = true
 
 [node name="ScreenShakeFX" parent="Pivot/CameraOffset/Camera2D" instance=ExtResource( 11 )]
 [connection signal="die" from="." to="." method="_on_Player_die"]
-[connection signal="fire" from="." to="Gun" method="_on_Player_fire"]
 [connection signal="fire" from="." to="SFX" method="_on_Player_fire"]
+[connection signal="fire" from="." to="Gun" method="_on_Player_fire"]
 [connection signal="hit" from="." to="Pivot/CameraOffset/Camera2D/ScreenShakeFX" method="_on_Player_hit"]
 [connection signal="shield_up" from="." to="SFX" method="_on_Player_shield_up"]
 [connection signal="soul_lost" from="." to="SoulsCircle" method="_on_Player_soul_lost"]
