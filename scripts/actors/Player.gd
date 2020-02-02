@@ -26,7 +26,7 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
     var movement: Vector2 = _get_movement_from_input()
 
-    velocity = speed * movement * delta * 1000
+    velocity = (speed / Game.souls_count) * movement * delta * 1000
     velocity = move_and_slide(velocity)
 
 func _get_movement_from_input() -> Vector2:
@@ -40,14 +40,16 @@ func _process_attack_input() -> void:
     if Input.is_action_just_pressed("fire") && gun_ammo != 0:
         gun_ammo -= 1
         emit_signal("fire", get_parent(), gun_ammo)
-    if (Input.is_action_just_pressed("shield_up") && Game.souls_count >= 3 &&
-        not shield_up && $ShieldCooldownTimer.get_time_left() == 0):
-        for _i in range(shield_cost):
-            spend_soul()
-        emit_signal("shield_up")
-        shield_up = true
-        $Sprite.modulate = Color(0, .5, .9)
-        $ShieldUpTimer.start()
+    if Input.is_action_just_pressed("shield_up") && Game.souls_count != 0 && \
+        !shield_up && $ShieldCooldownTimer.get_time_left() == 0:
+        _shield_up()
+
+func _shield_up() -> void:
+    spend_soul()
+    shield_up = true
+    $Sprite.modulate = Color(0, .5, .9)
+    $ShieldUpTimer.start()
+    emit_signal("shield_up")
 
 func spend_soul() -> void:
     Game.souls_count -= 1
@@ -59,7 +61,7 @@ func _on_Player_die() -> void:
     Game.souls_count = 0
     _game_over()
 
-func _on_Shop_checkout_item(item_type) -> void:
+func checkout_item(item_type) -> void:
     if Game.souls_count != 0:
         spend_soul()
 
@@ -79,6 +81,8 @@ func _heal() -> void:
 func hit() -> void:
     if shield_up:
         return
+    
+    OS.delay_msec(15)
 
     $Sprite.modulate = Color(1, 0, 0)  # red shade
     $HpLostTimer.start()

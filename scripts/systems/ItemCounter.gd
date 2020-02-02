@@ -9,7 +9,7 @@ const ZOOM_SCALE: = 1.1
 
 export var texture: Texture = null
 
-var focused: = false
+var customer_body: Node = null
 
 func _ready() -> void:
     $Sprite.texture = texture
@@ -20,21 +20,21 @@ func _process(delta: float) -> void:
     _process_input()
 
 func _process_input() -> void:
-    if focused && Input.is_action_just_pressed("interact"):
-        emit_signal("checkout_item")
+    if customer_body && Input.is_action_just_pressed("interact"):
+        emit_signal("checkout_item", customer_body)
+
+func _unfocus_item() -> void:
+    customer_body = null
+    $Sprite.scale = Vector2(UNZOOM_SCALE, UNZOOM_SCALE)
+
+func focus_item(customer: Node) -> void:
+    customer_body = customer
+    $Sprite.scale = Vector2(ZOOM_SCALE, ZOOM_SCALE)
 
 func _on_Area2D_body_entered(body: Node) -> void:
     if body.is_in_group("Player"):
-        focus_item()
+        focus_item(body)
 
 func _on_Area2D_body_exited(body: Node) -> void:
     if body.is_in_group("Player"):
         _unfocus_item()
-
-func _unfocus_item() -> void:
-    focused = false
-    $Sprite.scale = Vector2(UNZOOM_SCALE, UNZOOM_SCALE)
-
-func focus_item() -> void:
-    focused = true
-    $Sprite.scale = Vector2(ZOOM_SCALE, ZOOM_SCALE)
