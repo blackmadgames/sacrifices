@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/gui/GUI.tscn" type="PackedScene" id=2]
@@ -7,12 +7,17 @@
 [ext_resource path="res://scenes/systems/EnemySpawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/systems/Shop.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/music/sacrifices_background.ogg" type="AudioStream" id=7]
+[ext_resource path="res://scripts/levels/Level1.gd" type="Script" id=8]
+[ext_resource path="res://scenes/fx/FadeIn.tscn" type="PackedScene" id=9]
 
 [node name="Root" type="Node2D"]
+script = ExtResource( 8 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GUI" parent="CanvasLayer" instance=ExtResource( 2 )]
+
+[node name="FadeIn" parent="CanvasLayer" instance=ExtResource( 9 )]
 
 [node name="Player" parent="." groups=[
 "Player",

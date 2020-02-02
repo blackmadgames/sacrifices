@@ -1,6 +1,8 @@
 extends Actor
 class_name Enemy
 
+const DEATH_PARTICLES_SCENE = preload("res://scenes/particules/Mist.tscn")
+
 export var projectile_scene: PackedScene = null
 export var projectile_strength: = 30
 
@@ -22,6 +24,13 @@ func _ready() -> void:
 
 func hit() -> void:
     .hit()
+    _die()
+
+func _die():
+    var particles = DEATH_PARTICLES_SCENE.instance()
+    particles.position = position
+    get_parent().add_child(particles)
+    particles.emitting = true
     queue_free()
 
 func _physics_process(delta: float) -> void:

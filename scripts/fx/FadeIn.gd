@@ -1,12 +1,14 @@
 extends ColorRect
 
-signal fade_in_over
-
 const FADE_IN_ANIM_KEY = "FadeIn"
 
+func _ready() -> void:
+    fade_in()
+
 func fade_in():
+    $AnimationPlayer.stop()
     $AnimationPlayer.play(FADE_IN_ANIM_KEY)
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
     if anim_name == FADE_IN_ANIM_KEY:
-        emit_signal("fade_in_over")
+        hide()
