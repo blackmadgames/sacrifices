@@ -5,7 +5,7 @@ func _play(audio: AudioStreamPlayer) -> void:
         audio.stop()
     audio.play()
     
-func _on_Player_soul_lost(_souls_count: int) -> void:
+func _on_Player_soul_lost(_souls_count) -> void:
     _play($LostSoul)
 
 func _on_Player_shield_up() -> void:
@@ -13,3 +13,6 @@ func _on_Player_shield_up() -> void:
 
 func _on_Player_fire(_parent, _ammo_count) -> void:
     _play($Shoot)
+
+func _on_Player_hit(_hp) -> void:
+    _play($Hit)

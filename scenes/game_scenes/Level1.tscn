@@ -122,7 +122,7 @@ rotation = -3.14159
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = -18.0
+volume_db = -22.0
 autoplay = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
