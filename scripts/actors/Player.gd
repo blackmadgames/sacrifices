@@ -6,6 +6,7 @@ signal fire
 signal soul_lost
 signal recharged_ammo
 signal healed
+signal shield_up
 
 var max_gun_ammo: int = 30
 onready var gun_ammo = max_gun_ammo
@@ -43,6 +44,7 @@ func _process_attack_input() -> void:
         not shield_up && $ShieldCooldownTimer.get_time_left() == 0):
         for _i in range(shield_cost):
             spend_soul()
+        emit_signal("shield_up")
         shield_up = true
         $Sprite.modulate = Color(0, .5, .9)
         $ShieldUpTimer.start()
@@ -52,7 +54,6 @@ func spend_soul() -> void:
     emit_signal("soul_lost", souls_count)
 
 func _on_Player_die() -> void:
-    print("You're dead'")
     # For Debug purpose: restarting the scene
     get_tree().change_scene(get_tree().get_current_scene().get_filename())
 
