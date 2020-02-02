@@ -1,9 +1,11 @@
 extends Actor
 
+var Enum = preload("res://scripts/data/Enum.gd")
+
 signal fire
 signal soul_lost
-signal hit
 signal recharged_ammo
+signal healed
 
 var max_gun_ammo: int = 30
 onready var gun_ammo = max_gun_ammo
@@ -69,15 +71,15 @@ func _recharge_ammo() -> void:
 
 func _heal() -> void:
     hp = max(max_hp, hp + 1)
+    emit_signal("healed", hp)
 
-func _on_Player_hit() -> void:
+func hit() -> void:
     if shield_up:
         return
-    hp -= 1
+
     $Sprite.modulate = Color(1, 0, 0)  # red shade
     $HpLostTimer.start()
-    if hp == 0:
-        emit_signal("die")
+    .hit()
 
 func _on_HpLostTimer_timeout() -> void:
     $Sprite.modulate = Color(1, 1, 1)  # Back to normal
