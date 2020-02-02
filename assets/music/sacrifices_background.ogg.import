@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sacrifices_background.ogg-11bcecd26f92e2940ec15e6200ba9a28.oggstr"
+
+[deps]
+
+source_file="res://assets/music/sacrifices_background.ogg"
+dest_files=[ "res://.import/sacrifices_background.ogg-11bcecd26f92e2940ec15e6200ba9a28.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

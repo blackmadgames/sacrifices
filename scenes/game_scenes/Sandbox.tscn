@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/art/placeholders/img/tilemap.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scripts/PlayerCamera.gd" type="Script" id=4]
 [ext_resource path="res://scenes/gui/GUI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/systems/EnemySpawner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/music/sacrifices_background.ogg" type="AudioStream" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -85,6 +86,7 @@ zoom = Vector2( 0.9, 0.9 )
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 smoothing_enabled = true
+smoothing_speed = 3.0
 drag_margin_left = 0.1
 drag_margin_top = 0.1
 drag_margin_right = 0.1
@@ -113,6 +115,11 @@ spawn_on_ready = true
 [node name="EnemySpawner2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 763.129, 560.284 )
 spawn_on_ready = true
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -20.0
+autoplay = true
 [connection signal="fire" from="Player" to="CanvasLayer/GUI" method="_on_Player_fire"]
 [connection signal="healed" from="Player" to="CanvasLayer/GUI" method="_on_Player_healed"]
 [connection signal="hit" from="Player" to="CanvasLayer/GUI" method="_on_Player_hit"]

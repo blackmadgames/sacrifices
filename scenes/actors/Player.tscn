@@ -50,7 +50,7 @@ script = ExtResource( 7 )
 
 [node name="LostSoul" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 6 )
-volume_db = -14.0
+volume_db = -12.0
 [connection signal="die" from="." to="." method="_on_Player_die"]
 [connection signal="fire" from="." to="Gun" method="_on_Player_fire"]
 [connection signal="soul_lost" from="." to="SFX" method="_on_Player_soul_lost"]
