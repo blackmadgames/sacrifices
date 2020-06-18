@@ -2,6 +2,7 @@
 
 ## Introduction
 
+_Sacrifices must be made_ is a short top-down shooter made in Godot, in the context of a self-imposed 48 hour game-jam.
 
 ## How to play
 
